@@ -85,20 +85,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   description: toDoModel[index].discription,
                   count: (index + 1).toString(),
                   onEdit: () {
-                    Navigator.push(context, MaterialPageRoute (builder: (context)=> TodoEnterData(
-                      toDoModel : toDoModel[index],
-                      index:index;
-                    ),
-                    ),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TodoEnterData(
+                          toDoModel: toDoModel[index],
+                          index: index,
+                        ),
+                      ),
                     ).then((value) {
                       getData();
                     });
                   },
-                  onDelet: (){
+                  onDelet: () {
                     toDoModel.removeAt(index);
-                    setState(() {
-
-                    });
+                    setState(() {});
                     setData();
                   },
                 );
@@ -116,7 +117,9 @@ class _HomeScreenState extends State<HomeScreen> {
             MaterialPageRoute(
               builder: (context) => const TodoEnterData(),
             ),
-          );
+          ).then((value) {
+            getData();
+          });
         },
         child: Icon(Icons.navigate_next_rounded),
       ),

@@ -7,12 +7,13 @@ import 'package:todo_app/res/common/app_text_feild.dart';
 import 'package:todo_app/res/constant/app_string.dart';
 
 class TodoEnterData extends StatefulWidget {
+  final ToDoModel? toDoModel;
+  final int? index;
   const TodoEnterData({
     Key? key,
-    ToDoModel? toDoModel,
-    index,
+    this.toDoModel,
+    this.index,
   }) : super(key: key);
-
   @override
   State<TodoEnterData> createState() => _TodoEnterDataState();
 }
@@ -23,14 +24,16 @@ class _TodoEnterDataState extends State<TodoEnterData> {
   String time = "";
 
   SharedPreferences? sharedPreferences;
+  List<String> toDoList = [];
 
   setInstant() async {
     sharedPreferences = await SharedPreferences.getInstance();
+    getData();
   }
 
   getData() {
     if (sharedPreferences!.containsKey("ToDoData")) {
-      // toDolist = sharedPreferences!.getStringList("ToDoData")!;
+      toDoList = sharedPreferences!.getStringList("ToDoData")!;
       setState(() {});
     } else {
       debugPrint("No Data Found...");
@@ -43,8 +46,13 @@ class _TodoEnterDataState extends State<TodoEnterData> {
       "discription": discriptioncontroller.text,
       "time": time,
     };
+    if (widget.toDoModel != null) {
+      toDoList[widget.index!] = (jsonEncode(data));
+    } else {
+      toDoList.add(jsonEncode(data));
+    }
     debugPrint(' Data is set ---> $data');
-    sharedPreferences!.setStringList("ToDoModel", [jsonEncode(data)]);
+    sharedPreferences!.setStringList("ToDoModel", toDoList);
     Navigator.pop(context);
   }
 
@@ -53,6 +61,11 @@ class _TodoEnterDataState extends State<TodoEnterData> {
     // TODO: implement initState
     setInstant();
 
+    if (widget.toDoModel != null) {
+      titlecontroller.text = widget.toDoModel!.title!;
+      discriptioncontroller.text = widget.toDoModel!.discription!;
+      time = widget.toDoModel!.time!;
+    }
     super.initState();
   }
 
