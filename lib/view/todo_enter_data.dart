@@ -51,8 +51,9 @@ class _TodoEnterDataState extends State<TodoEnterData> {
     } else {
       toDoList.add(jsonEncode(data));
     }
-    debugPrint(' Data is set ---> $data');
-    sharedPreferences!.setStringList("ToDoModel", toDoList);
+
+    // debugPrint(' Data is set ---> $data');
+    sharedPreferences!.setStringList("ToDoData", toDoList);
     Navigator.pop(context);
   }
 
