@@ -145,7 +145,11 @@ class _TodoEnterDataState extends State<TodoEnterData> {
                     backgroundColor: MaterialStatePropertyAll(Colors.black),
                   ),
                   onPressed: () {
-                    setdata();
+                    if (titlecontroller.text.isNotEmpty) {
+                      setdata();
+                    } else {
+                      debugPrint("No Data found");
+                    }
                   },
                   child: const Text("Add Task"),
                 ),

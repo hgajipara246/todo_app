@@ -6,7 +6,12 @@ class AppTextField extends StatelessWidget {
   final String? hintText;
   final int? minAndMaxLine;
 
-  AppTextField({Key? key, this.controller, required this.hintText, required this.minAndMaxLine}) : super(key: key);
+  AppTextField({
+    Key? key,
+    this.controller,
+    required this.hintText,
+    required this.minAndMaxLine,
+  }) : super(key: key);
   final TextEditingController referralCodeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -14,6 +19,7 @@ class AppTextField extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     return TextField(
+      textAlignVertical: TextAlignVertical.bottom,
       controller: controller,
       minLines: minAndMaxLine,
       maxLines: minAndMaxLine,
