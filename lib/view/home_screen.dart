@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       debugPrint(jsonEncode(toDoModel));
       setState(() {});
     } else {
-      debugPrint("No Data Foud----------->>");
+      debugPrint("No Data Found----------->>");
     }
   }
 
@@ -60,13 +60,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.black,
         elevation: 0,
         title: AppString.homePageTitle,
       ),
       body: toDoModel.isEmpty
-          ? Center(
+          ? const Center(
               child: Text(
                 "No Data Found",
                 style: TextStyle(
@@ -121,10 +121,10 @@ class _HomeScreenState extends State<HomeScreen> {
             getData();
           });
         },
-        child: Icon(Icons.navigate_next_rounded),
+        child: const Icon(Icons.navigate_next_rounded),
       ),
       backgroundColor: Colors.white,
-      drawer: Drawer(),
+      drawer: const Drawer(),
     );
   }
 }

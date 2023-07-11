@@ -37,7 +37,7 @@ class ToDoTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 width: 1,
-                color: const Color(0xB000000),
+                color: const Color(0x0b000000),
                 style: BorderStyle.solid,
               ),
               boxShadow: const [

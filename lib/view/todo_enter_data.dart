@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -59,7 +61,6 @@ class _TodoEnterDataState extends State<TodoEnterData> {
 
   @override
   void initState() {
-    // TODO: implement initState
     setInstant();
 
     if (widget.toDoModel != null) {
@@ -92,7 +93,7 @@ class _TodoEnterDataState extends State<TodoEnterData> {
           ),
           child: ListView(
             scrollDirection: Axis.vertical,
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             children: [
               AppTextField(
                 hintText: 'Enter Title',
@@ -110,7 +111,7 @@ class _TodoEnterDataState extends State<TodoEnterData> {
               SizedBox(height: MediaQuery.of(context).size.height / 50),
               GestureDetector(
                   child: Container(
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       border: Border.all(
