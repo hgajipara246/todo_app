@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app/model/to_do_model.dart';
-import 'package:todo_app/res/constant/app_string.dart';
 import 'package:todo_app/view/todo_enter_data.dart';
 import 'package:todo_app/view/todo_tile.dart';
 
@@ -15,6 +14,23 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String getGreeting() {
+    final currentTime = DateTime.now();
+    final currentHour = currentTime.hour;
+
+    String greeting;
+
+    if (currentHour < 12) {
+      greeting = 'Good Morning';
+    } else if (currentHour < 17) {
+      greeting = 'Good Afternoon';
+    } else {
+      greeting = 'Good Evening';
+    }
+
+    return greeting;
+  }
+
   SharedPreferences? sharedPreferences;
 
   List<ToDoModel> toDoModel = [];
@@ -63,7 +79,14 @@ class _HomeScreenState extends State<HomeScreen> {
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.black,
         elevation: 0,
-        title: AppString.homePageTitle,
+        title: Text(
+          "Hello, ${getGreeting()}!",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w800,
+            fontSize: 20,
+          ),
+        ),
       ),
       body: toDoModel.isEmpty
           ? const Center(
@@ -83,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: toDoModel[index].title,
                   time: toDoModel[index].time,
                   description: toDoModel[index].discription,
-                  count: (index + 1).toString(),
+                  count: "${(index + 1).toString()}.",
                   onEdit: () {
                     Navigator.push(
                       context,
@@ -110,6 +133,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
         backgroundColor: Colors.black,
         onPressed: () {
           Navigator.push(
@@ -121,10 +147,9 @@ class _HomeScreenState extends State<HomeScreen> {
             getData();
           });
         },
-        child: const Icon(Icons.navigate_next_rounded),
+        child: const Icon(Icons.add),
       ),
       backgroundColor: Colors.white,
-      drawer: const Drawer(),
     );
   }
 }

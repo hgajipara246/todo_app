@@ -20,6 +20,7 @@ class AppTextField extends StatelessWidget {
 
     return TextField(
       textAlignVertical: TextAlignVertical.bottom,
+      keyboardType: TextInputType.name,
       controller: controller,
       minLines: minAndMaxLine,
       maxLines: minAndMaxLine,
@@ -32,13 +33,13 @@ class AppTextField extends StatelessWidget {
       ),
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: CupertinoColors.black),
+          borderSide: const BorderSide(color: CupertinoColors.black),
           borderRadius: BorderRadius.all(
             Radius.circular(width / 150),
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.black),
+          borderSide: const BorderSide(color: Colors.black),
           borderRadius: BorderRadius.all(
             Radius.circular(width / 150),
           ),

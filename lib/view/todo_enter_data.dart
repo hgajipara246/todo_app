@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app/model/to_do_model.dart';
 import 'package:todo_app/res/common/app_text_feild.dart';
-import 'package:todo_app/res/constant/app_string.dart';
 
 class TodoEnterData extends StatefulWidget {
   final ToDoModel? toDoModel;
@@ -119,7 +118,7 @@ class _TodoEnterDataState extends State<TodoEnterData> {
                       ),
                     ),
                     child: Text(
-                      time.isNotEmpty ? time : AppString.selectedTime,
+                      time.isNotEmpty ? time : "Selected Time",
                       style: TextStyle(
                         color: time.isNotEmpty ? Colors.black : Colors.grey.shade700,
                         fontSize: 16,
