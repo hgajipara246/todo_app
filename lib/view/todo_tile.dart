@@ -72,8 +72,13 @@ class ToDoTile extends StatelessWidget {
                   ),
                   const Spacer(),
                   PopupMenuButton<String>(
+                    enabled: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                       const PopupMenuItem<String>(
+                        enabled: true,
                         value: 'delete',
                         child: ListTile(
                           leading: Icon(Icons.delete_outline_outlined),
@@ -81,6 +86,7 @@ class ToDoTile extends StatelessWidget {
                         ),
                       ),
                       const PopupMenuItem<String>(
+                        enabled: true,
                         value: 'edit',
                         child: ListTile(
                           leading: Icon(Icons.edit),

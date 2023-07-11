@@ -14,23 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String getGreeting() {
-    final currentTime = DateTime.now();
-    final currentHour = currentTime.hour;
-
-    String greeting;
-
-    if (currentHour < 12) {
-      greeting = 'Good Morning';
-    } else if (currentHour < 17) {
-      greeting = 'Good Afternoon';
-    } else {
-      greeting = 'Good Evening';
-    }
-
-    return greeting;
-  }
-
   SharedPreferences? sharedPreferences;
 
   List<ToDoModel> toDoModel = [];
@@ -65,6 +48,23 @@ class _HomeScreenState extends State<HomeScreen> {
     sharedPreferences!.setStringList("ToDoData", listData);
   }
 
+  String getGreeting() {
+    final currentTime = DateTime.now();
+    final currentHour = currentTime.hour;
+
+    String greeting;
+
+    if (currentHour < 12) {
+      greeting = 'Good Morning';
+    } else if (currentHour < 17) {
+      greeting = 'Good Afternoon';
+    } else {
+      greeting = 'Good Evening';
+    }
+
+    return greeting;
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         title: Text(
           "Hello, ${getGreeting()}!",
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w800,
             fontSize: 20,
